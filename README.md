@@ -2,12 +2,12 @@
 Download all the dependent debs in Ubuntu given your required package name
 
 Usage:
-```shell
+```sh
 bash download.sh <ubuntu_version> <package_name>
 ```
 
 For example:
-```shell
+```sh
 bash download.sh 16.04 libopenblas-dev
 ```
 
