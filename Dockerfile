@@ -1,4 +1,6 @@
-FROM ubuntu:16.04
+ARG ubuntu_version=16.04
+
+FROM ubuntu:$ubuntu_version
 
 RUN echo "deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse" >> /etc/apt/sources.list
