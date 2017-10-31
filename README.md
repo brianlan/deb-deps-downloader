@@ -11,4 +11,4 @@ For example:
 bash download.sh 16.04 libopenblas-dev
 ```
 
-After this script finished running, you will get an file named archive.tar in your current folder.
+After this script finished running, you will get an file named __*archive.tar*__ in your current folder.
