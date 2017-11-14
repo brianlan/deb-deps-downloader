@@ -14,7 +14,7 @@ IN_CHINA=$1; shift;
 
 TAR_PATH="${PACKAGE}.tar.gz"
 
-if [ ${IN_CHINA} -eq "in_china" ]
+if [ "${IN_CHINA}" == "in_china" ]
   then
     dockerfilename="Dockerfile.china"
   else
@@ -22,17 +22,17 @@ if [ ${IN_CHINA} -eq "in_china" ]
 fi
 
 echo "start to build docker image"
-docker build -t tmp_deb_img --build-arg ubuntu_version=${UBT_VER} ${dockerfilename}
+docker build -t tmp_deb_img --build-arg ubuntu_version=${UBT_VER} -f ${dockerfilename} .
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
   then
-    echo "start to download deb packages and then put them into a tar file"
-    docker run --rm -v tmp_deb:${ARCHIVE_DIR} -v $(pwd):/__tmp__ tmp_deb_img \
-      /bin/bash -c "apt-get install -y --download-only ${PACKAGE}; tar zxvf /__tmp__/${TAR_PATH} ${ARCHIVE_DIR}"
-  else
     echo "Error found during building docker image. Process aborted and wait for cleaning."
     exit 1
 fi
+
+echo "start to download deb packages and then put them into a tar file"
+docker run --rm -v tmp_deb:${ARCHIVE_DIR} -v $(pwd):/__tmp__ tmp_deb_img \
+      /bin/bash -c "apt-get install -y --download-only ${PACKAGE}; tar zxvf /__tmp__/${TAR_PATH} ${ARCHIVE_DIR}"
 
 echo "deleting temp docker volume"
 docker volume rm tmp_deb
