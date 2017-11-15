@@ -6,12 +6,12 @@ __Prerequisite__:
 
 __Usage__:
 ```sh
-bash download.sh <ubuntu_version> <package_name>
+bash download.sh <ubuntu_version> <package_name> [in_china]
 ```
 
 __Example__:
 ```sh
-bash download.sh 16.04 libopenblas-dev
+bash download.sh 16.04 libopenblas-dev in_china
 ```
 
-After this script finished running, you will get an file named __*archive.tar*__ in your current folder.
+After this script finished running, you will get an file named __*libopenblas-dev.tar.gz*__ in your current folder. Unzip it and use _dpkg -i_ to install those debs.
