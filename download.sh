@@ -32,7 +32,7 @@ fi
 
 echo "start to download deb packages and then put them into a tar file"
 docker run --rm -v tmp_deb:${ARCHIVE_DIR} -v $(pwd):/__tmp__ tmp_deb_img \
-      /bin/bash -c "apt-get install -y --download-only ${PACKAGE}; tar czvf /__tmp__/${TAR_PATH} ${ARCHIVE_DIR}"
+      /bin/bash -c "apt-get install -y --download-only ${PACKAGE}; tar -C ${ARCHIVE_DIR} -czvf /__tmp__/${TAR_PATH} ./"
 #docker run -d -v tmp_deb:${ARCHIVE_DIR} -v $(pwd):/__tmp__ tmp_deb_img \
 #      /bin/bash -c "apt-get install -y --download-only ${PACKAGE}; tail -f /dev/null"
 
