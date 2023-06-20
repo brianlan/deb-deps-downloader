@@ -12,7 +12,7 @@ UBT_VER=$1; shift;
 PACKAGE=$1; shift;
 IN_CHINA=$1; shift;
 
-TAR_PATH="${PACKAGE}.tar.gz"
+TAR_PATH="${PACKAGE}-${UBT_VER}.tar.gz"
 
 if [ "${IN_CHINA}" == "in_china" ]
   then
